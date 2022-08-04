@@ -1,8 +1,13 @@
 import graphene
 from blog import schema
+import users.schema
+
 
 # Maps the blog model schema to the core schema that is referenced in settings.py
 class Query(schema.Query, graphene.ObjectType):
     pass
 
-schema = graphene.Schema(query=Query)
+class Mutation(users.schema.Mutation,schema.Mutation, graphene.ObjectType):
+    pass
+
+schema = graphene.Schema(query=Query, mutation=Mutation)

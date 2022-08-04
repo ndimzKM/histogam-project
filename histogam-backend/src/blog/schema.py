@@ -1,19 +1,31 @@
 import graphene
+from graphene_django import DjangoListField
 from graphene import ObjectType
-from graphene_django import DjangoObjectType
-from .models import P
+from .queries import PostType
+from .mutations import CreatePost
 
-#Converting our recipe model to a graphql type
-class RecipeType(DjangoObjectType):
-    class Meta:
-        model = Recipe
-        # All fields in our model
-        fields = ('__all__')
 
 class Query(ObjectType):
-    #name of query that gets a list of all the recipe data and stores it as a list
-    all_recipes = graphene.List(RecipeType)
+    #name of query that gets a list of all post data and stores it as a list of PostType
+    all_posts = DjangoListField(PostType)
 
-     #A resolver populates the data in your schema.
-    def resolve_all_recipes(self, info):
-        return Recipe.objects.all()
+    #get a single post by id
+    post_by_id = graphene.Field(PostType, id=graphene.Int())
+
+    def resolve_post_by_id(self, info, **kwargs):
+        id = kwargs.get('id')
+        if id is not None:
+            return Post.objects.get(pk=id)
+
+    # get a post by title
+    post_by_title = graphene.Field(PostType, title=graphene.String())
+
+    def resolve_post_by_title(self, info, **kwargs):
+        title = kwargs.get('title')
+        if title is not None:
+            return Post.objects.get(title=title)
+
+
+class Mutation(ObjectType):
+
+    create_post = CreatePost.Field()
