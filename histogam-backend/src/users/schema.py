@@ -29,6 +29,14 @@ class CreateUser(graphene.Mutation):
 
 
 class Query(graphene.ObjectType):
+    # me query is used to get the current logged in user
+    me = graphene.Field(UserType)
+
+    def resolve_me(self, info):
+        user = info.context.user
+        if user.is_anonymous:
+            raise Exception('Not logged in!')
+        return user
 
     # get list of all users
     all_users = graphene.List(UserType)
