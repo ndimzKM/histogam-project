@@ -4,7 +4,7 @@ import users.schema
 
 
 # Maps the blog model schema to the core schema that is referenced in settings.py
-class Query(schema.Query, graphene.ObjectType):
+class Query(users.schema.Query,schema.Query, graphene.ObjectType):
     pass
 
 class Mutation(users.schema.Mutation,schema.Mutation, graphene.ObjectType):
