@@ -2,7 +2,7 @@ import graphene
 from graphene_django import DjangoListField
 from graphene import ObjectType
 from .queries import PostType
-from .mutations import CreatePost
+from .mutations import *
 
 
 class Query(ObjectType):
@@ -27,5 +27,8 @@ class Query(ObjectType):
 
 
 class Mutation(ObjectType):
-
     create_post = CreatePost.Field()
+    update_post = UpdatePost.Field()
+    delete_post = DeletePost.Field()
+
+
