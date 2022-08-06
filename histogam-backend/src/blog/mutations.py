@@ -1,5 +1,4 @@
 from graphene import ObjectType, String, Int, List, Field, ID, Mutation, Boolean
-from graphene_django.forms.mutation import DjangoModelFormMutation
 from .models import *
 from .queries import *
 from users.schema import UserType
@@ -7,7 +6,7 @@ from users.schema import UserType
 # region post mutations
 
 class CreatePost(Mutation):
-    create_post = Field(PostType)
+    post = Field(PostType)
 
     class Arguments:
         title   = String(required=True)
@@ -25,7 +24,7 @@ class CreatePost(Mutation):
 
         post.save()
 
-        return CreatePost(create_post=post)
+        return CreatePost(post=post)
 
 class UpdatePost(Mutation):
     Post = Field(PostType)
@@ -116,7 +115,7 @@ class CreateComment(Mutation):
         post_id = Int(required = True)
         comment = String(required = True)
 
-    def mutate(self, info, post_id, comment ):
+    def mutate(self, info, post_id, comment):
         user = info.context.user
 
         if user.is_anonymous:
