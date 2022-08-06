@@ -31,4 +31,8 @@ class Mutation(ObjectType):
     update_post = UpdatePost.Field()
     delete_post = DeletePost.Field()
 
+    create_like = CreateLike.Field()
+
+    create_comment = CreateComment.Field()
+
 

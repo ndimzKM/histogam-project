@@ -1,8 +1,10 @@
 from graphene import ObjectType, String, Int, List, Field, ID, Mutation, Boolean
 from graphene_django.forms.mutation import DjangoModelFormMutation
-from .models import Post
-from .queries import PostType
+from .models import *
+from .queries import *
+from users.schema import UserType
 
+# region post mutations
 
 class CreatePost(Mutation):
     create_post = Field(PostType)
@@ -77,4 +79,59 @@ class DeletePost(Mutation):
 
         return DeletePost(success=True)
 
+#endregion
 
+#region like mutations
+
+class CreateLike(Mutation):
+    user = Field(UserType)
+    post = Field(PostType)
+
+    class Arguments:
+        post_id = Int(required = True)
+
+    def mutate(self, info, post_id):
+        user = info.context.user
+
+        if user.is_anonymous:
+            raise Exception('Login to like post.')
+
+        post = Post.objects.get(id = post_id)
+
+        if not post:
+            raise Exception('Post cannot be found')
+
+        Like.objects.create(user=user, post=post)
+
+        return CreateLike(user=user, post=post)
+#endregion
+
+#region comments mutations
+
+class CreateComment(Mutation):
+    user = Field(UserType)
+    post = Field(PostType)
+
+    class Arguments:
+        post_id = Int(required = True)
+        comment = String(required = True)
+
+    def mutate(self, info, post_id, comment ):
+        user = info.context.user
+
+        if user.is_anonymous:
+            raise Exception('Login to comment on post.')
+
+        post = Post.objects.get(id = post_id)
+
+        if not post:
+            raise Exception('Post cannot be found')
+
+        Comment.objects.create(user=user, post=post, comment=comment)
+
+        return CreateComment(user=user, post=post)
+
+
+
+
+#endregion
