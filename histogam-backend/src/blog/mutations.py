@@ -130,7 +130,4 @@ class CreateComment(Mutation):
 
         return CreateComment(user=user, post=post)
 
-
-
-
 #endregion

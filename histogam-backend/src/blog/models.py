@@ -16,6 +16,6 @@ class Like(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    user    = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    post    = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     comment = models.TextField(blank=True, null=True)
