@@ -25,6 +25,8 @@ class Query(ObjectType):
         if title is not None:
             return Post.objects.get(title=title)
 
+    all_likes = DjangoListField(LikeType)
+
 
 class Mutation(ObjectType):
     create_post    = CreatePost.Field()

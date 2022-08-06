@@ -2,6 +2,7 @@ from graphene import ObjectType, String, Int, List, Field, ID, Mutation, Boolean
 from .models import *
 from .queries import *
 from users.schema import UserType
+from graphql import GraphQLError
 
 # region post mutations
 
@@ -18,7 +19,7 @@ class CreatePost(Mutation):
         user = info.context.user
 
         if user.is_anonymous:
-            raise Exception('Log in to post content')
+            raise GraphQLError('Log in to post content')
 
         post = Post(title=title, content=content, image=image, posted_by=user)
 
@@ -39,12 +40,12 @@ class UpdatePost(Mutation):
         user = info.context.user
 
         if user.is_anonymous:
-            raise Exception('Log in to update content')
+            raise GraphQLError('Log in to update content')
 
         post = Post.objects.get(id=id)
 
         if post.posted_by != user:
-            raise Exception('Cannot update content posted by another user')
+            raise GraphQLError('Cannot update content posted by another user')
 
         post.title   = title
         post.content = content
@@ -67,12 +68,12 @@ class DeletePost(Mutation):
         user = info.context.user
 
         if user.is_anonymous:
-            raise Exception('Log in to delete content')
+            raise GraphQLError('Log in to delete content')
 
         post = Post.objects.get(id=id)
 
         if post.posted_by != user:
-            raise Exception('Cannot delete content posted by another user')
+            raise GraphQLError('Cannot delete content posted by another user')
 
         post.delete()
 
@@ -93,12 +94,12 @@ class CreateLike(Mutation):
         user = info.context.user
 
         if user.is_anonymous:
-            raise Exception('Login to like post.')
+            raise GraphQLError('Login to like post.')
 
         post = Post.objects.get(id = post_id)
 
         if not post:
-            raise Exception('Post cannot be found')
+            raise GraphQLError('Post cannot be found')
 
         Like.objects.create(user=user, post=post)
 
@@ -119,12 +120,12 @@ class CreateComment(Mutation):
         user = info.context.user
 
         if user.is_anonymous:
-            raise Exception('Login to comment on post.')
+            raise GraphQLError('Login to comment on post.')
 
         post = Post.objects.get(id = post_id)
 
         if not post:
-            raise Exception('Post cannot be found')
+            raise GraphQLError('Post cannot be found')
 
         Comment.objects.create(user=user, post=post, comment=comment)
 
