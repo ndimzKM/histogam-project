@@ -4,6 +4,7 @@
 
 
 # Creating a mutation
+```
 import graphene
 from .models import Xxxx
 class XxxxType(DjangoObjectType):
@@ -22,6 +23,7 @@ class CreateXxxx(graphene.Mutation):
         xxxx = Xxxx(xx_string=xx_string, xx_int=xx_int, xx_boolean=xx_boolean)
         xx.save()
         return CreateXxxx(xxxx=xxxx)
+```
 
 ## Arguments
     Attributes are the arguments that the Mutation CreateXxxx needs for resolving, in this case name
@@ -35,6 +37,7 @@ class CreateXxxx(graphene.Mutation):
 
 # Updating a mutation
 
+```
 class UpdateXxxx(Mutation):
     xxxx = graphene.Field(XxxxType)
 
@@ -52,11 +55,12 @@ class UpdateXxxx(Mutation):
 
         xxxx.save()
         return UpdateXxxx(xxxx = xxxx)
-
+```
 
 
 # Deleting a mutation
 
+```
 class DeleteXxxx(Mutation):
     class Arguments:
         xx_id = Int(required=True)
@@ -67,3 +71,4 @@ class DeleteXxxx(Mutation):
         xxxx    = Xxxx.objects.get(id=xx_id)
         xxxx.delete()
         return DeleteXxxx(success=True) #Return true if successful
+```

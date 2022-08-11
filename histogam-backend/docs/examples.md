@@ -1,3 +1,4 @@
+```
 # List of queries
 
 
@@ -180,3 +181,4 @@ allPosts{
 		}
 	}
 }
+```

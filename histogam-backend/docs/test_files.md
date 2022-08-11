@@ -6,6 +6,7 @@
     This file tests for both graphql endpoints and also all subsequent queries. A query is instanciated in triple quotes. Note that before testing this particular file the server should be up and running.
 
 ### test_xxxx.queries.py
+```
 import pytest
 import requests
 
@@ -25,6 +26,7 @@ def test_query_all_xxxx_data_should_return_http_200():
     response = requests.post("http://localhost:8000/api", json={'query': query_all_xxxx})
     assert response.status_code == 200
 
+```
 
 ## Testing mutations
 

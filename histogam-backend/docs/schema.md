@@ -1,12 +1,14 @@
 # Overview
     All the queries and mutations are initialized in here
 
+
+
+## All Queries
+```
 from .models import *
 from .gql_queries import *
 from .gql_mutations import *
 import graphene
-
-## All Queries
 class Query(ObjectType):
 
     # for uniformity all list queries start with keyword "all_"
@@ -28,3 +30,5 @@ class Mutation(ObjectType):
     create_xxxx = CreateXxxx.Field()
     update_xxxx = UpdateXxxx.Field()
     delete_xxxx = DeleteXxxx.Field()
+    
+```
