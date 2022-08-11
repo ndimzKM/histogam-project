@@ -31,7 +31,7 @@ class UpdatePost(Mutation):
     Post = Field(PostType)
 
     class Arguments:
-        id = Int(required=True)
+        id      = Int(required=True)
         title   = String()
         content = String()
         image   = String()
