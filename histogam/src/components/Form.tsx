@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export default function Form() {
     return (
-        <div className=' w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100'>
+        <div className='w-11/12 max-w-[699px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100'>
             <h1 className='text-5xl font-semibold text-center'>Welcome to the history of The Gambia</h1>
             <p className='font-medium text-lg text-center text-gray-500 mt-4'>please sign in or up to get started.</p>
             <div className='mt-8'>
@@ -17,13 +17,13 @@ export default function Form() {
                     <input 
                         className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
                         placeholder="Enter your password"
-                        type={"password"}
+                        type="password"
                     />
                 </div>
                 <div className='mt-8 flex justify-between items-center'>
                     <div>
                         <input  type="checkbox" id='remember'/>
-                        <label className='ml-2 font-medium text-base' >Remember for 30 days</label>
+                        <label className='ml-2 font-medium text-base' >Remember for 29 days</label>
                     </div>
                     <button className='font-medium text-base text-violet-500'>Forgot password</button>
                 </div>

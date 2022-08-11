@@ -16,8 +16,8 @@ export default function Register() {
                     <label className='text-lg font-medium'>Password</label>
                     <input 
                         className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-                        placeholder="Enter your email"
-                        type={"password"}
+                        placeholder="Enter your password"
+                        type="password"
                     />
                 </div>
                 <div className='mt-8 flex justify-between items-center'>

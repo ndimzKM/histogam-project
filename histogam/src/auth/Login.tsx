@@ -8,10 +8,7 @@ function Login() {
              <Form />
              </div>
 
-             <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center bg-[url('https://pbs.twimg.com/media/E0nBToAXsAAf-2h.jpg')]">
-               
-
-             </div>
+             <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center bg-[url('https://pbs.twimg.com/media/E0nBToAXsAAf-2h.jpg')]"></div>
 
         </div>
   );
