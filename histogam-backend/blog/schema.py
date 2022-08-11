@@ -1,13 +1,28 @@
 import graphene
-from graphene_django import DjangoListField
 from graphene import ObjectType
 from .queries import PostType
 from .mutations import *
+from django.db.models import Q
 
 
 class Query(ObjectType):
-    #name of query that gets a list of all post data and stores it as a list of PostType
-    all_posts = DjangoListField(PostType)
+    #this query gets a list of all posts in the database
+    #and also a full search text function for all fields in the post model
+    all_posts = graphene.List(PostType, search = graphene.String())
+
+    def resolve_all_posts(self,info, search=None):
+        if search:
+            filter = (
+                Q(title__icontains=search) |
+                Q(content__icontains=search) |
+                Q(posted_by__username__icontains=search) |
+                Q(posted_by__username__icontains=search)
+            )
+
+            return Post.objects.filter(filter)
+
+        return Post.objects.all()
+
 
     #get a single post by id
     post_by_id = graphene.Field(PostType, id=graphene.Int())
