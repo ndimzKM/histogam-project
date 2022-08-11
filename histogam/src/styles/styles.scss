@@ -1,0 +1,108 @@
+main.home {
+    margin: auto;
+    max-width:1500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 50px 0;
+    button.ctrl-btn {
+        width: 50px;
+        height:50px;
+        border-radius:50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background:#444;
+        color:#fff;
+        font-size: 1.5em;
+    }
+    .ctrl-btn:first-child {
+        margin-right: 40px;
+    }
+    .ctrl-btn:last-child {
+        margin-left: 40px;
+    }
+
+    section.main {
+        width:80%;
+        display: flex;
+        height:100%;
+        justify-content: space-between;
+        .post-image {
+            width:50%;
+            height: 100%;
+            background: url('../images/first.jpg') no-repeat center center/cover;
+        }
+        .post-info {
+            width:50%;
+            position: relative;
+            p {
+                padding-left: 56px;
+            }
+            .avatar {
+                background: url('../images/profile.jpg') no-repeat center center/cover;
+            }
+            .make-comment {
+                position: absolute;
+                bottom: 0;
+                padding-left: 18px;
+                width:100%;
+                i {
+                    font-size: 1.7em;
+                }
+                .first-icons {
+                    i {
+                        padding-right: 15px;
+                    }
+                }
+                .likes {
+                    font-size:0.9em;
+                    padding-top:10px;
+                }
+                .time {
+                    font-size:0.8em;
+                    text-transform: uppercase;
+                }
+                form {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top:10px;
+                    padding: 10px 0;
+                    border-top: 1px #eee solid;
+                    div {
+                        input {
+                            outline:none;
+                            margin-left:10px;
+                        }
+                    }
+                    button {
+                        font-weight:bold;
+                        opacity: 0.5;
+                        font-size:0.9em;
+                    }
+                }
+            }
+            .user {
+                padding:10px;
+                padding-bottom:0px;
+                span {
+                    padding-left: 8px;
+                }
+                span.username {
+                    font-weight:bold;
+                }
+            }
+            .actions {
+                padding-left: 56px;
+                span {
+                    font-weight: bold;
+                    opacity: 0.5;
+                    font-size:0.8em;
+                    padding-right: 10px;
+                }
+            }
+        }
+    }
+}
