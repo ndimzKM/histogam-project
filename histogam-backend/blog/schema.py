@@ -1,4 +1,5 @@
 from graphene import List, String, ObjectType, Int, Boolean, Field
+from graphene_django import DjangoListField
 from .queries import PostType
 from .mutations import *
 from django.db.models import Q
@@ -24,7 +25,7 @@ class Query(ObjectType):
 
 
     #get a single post by id
-    post_by_id = Field(PostType, id=graphene.Int())
+    post_by_id = Field(PostType, id=Int())
 
     def resolve_post_by_id(self, info, **kwargs):
         id = kwargs.get('id')
