@@ -1,8 +1,18 @@
 import * as React from 'react';
 import '../styles/styles.scss';
 
-export default function Home() {
+import { getAuth, signOut } from 'firebase/auth';
+import NavBar from '../components/NavBar';
+
+export interface IHomePageProps {}
+
+
+ const Home: React.FunctionComponent<IHomePageProps> = (props) => {
+
+    const auth = getAuth();
+
     return (
+       
         <main className="home">
             <button className="ctrl-btn">
 <i className='bx bx-chevron-left' ></i>
@@ -28,7 +38,10 @@ export default function Home() {
             <button className="ctrl-btn">
 <i className='bx bx-chevron-right' ></i>
             </button>
+            <NavBar />
         </main>
+
+        
     );
 }
 
@@ -72,3 +85,5 @@ const Comment = () => {
         </div>
     );
 };
+
+export default Home;
