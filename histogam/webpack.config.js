@@ -3,12 +3,22 @@ const production = process.env.NODE_ENV === "production";
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const webpack = require('webpack');
+
 module.exports = {
     mode: production ? 'production' : 'development',
     entry: './src/index.tsx',
     output: {
         path: __dirname + '/dist',
     },
+
+    resolve: {
+        fallback: {
+            "fs": false
+        },
+    },
+   
+  
     module: {
         rules: [
             {
@@ -38,5 +48,9 @@ module.exports = {
             filename: "style.css",
             chunkFilename: "style.css"
         }),
+
+        new webpack.DefinePlugin({
+            process: {env: {}}
+          })
     ],
 };
