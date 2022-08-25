@@ -52,6 +52,10 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
     navigate("/register");
   }
 
+  const ForgotPassword = () => {
+    navigate("/forgot");
+  }
+
   return (
     
     <div className="flex h-screen bg-[url('https://images.jacobinmag.com/wp-content/uploads/sites/3/2015/02/21092853/Wellington_Street_Bathurst_now_Banjul_capital_city_of_The_Gambia_West_Africa_c._1905_7826841010-1.jpg')] bg-cover bg-no-repeat">
@@ -86,7 +90,9 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
                             Remember for 29 days
                         </label>
                     </div>
-                    <button className="font-medium text-base text-violet-500">
+                    <button
+                    onClick={ () => ForgotPassword()}
+                    className="font-medium text-base text-violet-500">
                         Forgot password
                     </button>
                 </div>
