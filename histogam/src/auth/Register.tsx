@@ -68,6 +68,8 @@ const Register: React.FunctionComponent<IRegisterPageProps> = (props) => {
 
     return (
         <main className="register">
+             <div className="flex h-screen bg-[url('https://i0.wp.com/cornishbirdblog.com/wp-content/uploads/2018/09/2018-09-05-31-1844887230-1536173987584.png?fit=750%2C453&ssl=1')] bg-cover bg-no-repeat">
+          <div className="w-full flex items-center justify-center  h-screen ">
         <div className=' w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100'>
             <h1 className='text-5xl font-semibold text-center'>Register</h1>
             <p className='font-medium text-lg text-center text-gray-500 mt-4'>please sign up to get started.</p>
@@ -121,6 +123,8 @@ const Register: React.FunctionComponent<IRegisterPageProps> = (props) => {
                
             </div>
             
+        </div>
+        </div>
         </div>
         </main>
         
