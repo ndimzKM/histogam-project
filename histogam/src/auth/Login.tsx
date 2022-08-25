@@ -54,9 +54,9 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
 
   return (
     
-    <div className="flex w-full h-screen bg-blue-100 ">
-          <div className="w-full flex items-center justify-center lg:w-1/2 h-screen ">
-            <div className="w-11/12 max-w-[699px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100">
+    <div className="flex h-screen bg-[url('https://images.jacobinmag.com/wp-content/uploads/sites/3/2015/02/21092853/Wellington_Street_Bathurst_now_Banjul_capital_city_of_The_Gambia_West_Africa_c._1905_7826841010-1.jpg')] bg-cover bg-no-repeat">
+          <div className="w-full flex items-center justify-center  h-screen ">
+            <div className="w-11/12 max-w-[699px] px-10 py-20 rounded-3xl bg-white items-center border-2 border-gray-100">
             <h1 className="text-5xl font-semibold text-center">
                 Welcome to the history of The Gambia
             </h1>
@@ -134,9 +134,6 @@ const Login: React.FunctionComponent<ILoginPageProps> = (props) => {
     
 
              </div>
-
-             <div className="hidden relative lg:flex h-full w-1/2 items-center justify-center bg-[url('https://pbs.twimg.com/media/E0nBToAXsAAf-2h.jpg')]"></div>
-
         </div>
   );
 }
