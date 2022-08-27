@@ -64,6 +64,10 @@ const Register: React.FunctionComponent<IRegisterPageProps> = (props) => {
               setRegistering(false);
             });
           }
+          const ForgotPassword = () => {
+            navigate("/forgot");
+          }
+        
         
 
     return (
@@ -100,7 +104,7 @@ const Register: React.FunctionComponent<IRegisterPageProps> = (props) => {
                         <input  type="checkbox" id='remember'/>
                         <label className='ml-2 font-medium text-base' >Remember for 30 days</label>
                     </div>
-                    <button className='font-medium text-base text-violet-500'>Forgot password</button>
+                    <button  onClick={() => ForgotPassword() }  className='font-medium text-base text-violet-500'>Forgot password</button>
                 </div>
                 <div className='mt-8 flex flex-col gap-y-4'>
                     <button onClick={() => signUpWithEmailAndPassword() } className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>Sign up</button>
