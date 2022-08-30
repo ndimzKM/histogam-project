@@ -41,6 +41,13 @@ module.exports = {
     },
     devtool: production ? undefined : 'source-map',
     plugins: [
+        new webpack.EnvironmentPlugin({
+            /* //add the variables here
+             * You can access them as process.env.NODE_ENV etc.
+            NODE_ENV:'development',
+            DEBUG: false
+            */
+        }),
         new HtmlWebpackPlugin({
             template: 'index.html'
         }),
