@@ -86,7 +86,7 @@ export const ForgotPassword: React.FunctionComponent<IForgotPasswordPageProps> =
    </div>
 }
    </div>
-   </div>
+   </div>   
 
    </div>
    </main>
