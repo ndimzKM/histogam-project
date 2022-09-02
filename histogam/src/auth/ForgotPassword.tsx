@@ -19,9 +19,8 @@ export const ForgotPassword: React.FunctionComponent<IForgotPasswordPageProps> =
     const resetPasswordRequest = () => {
         if(error !== '') setError ('');
         setSending(true);
-        sendPasswordResetEmail(auth, email)
-        .then(result => {
-            console.log(result);
+        sendPasswordResetEmail(auth, email).then(() => {
+            setSending(false);
             setSent(true);
         })
         .catch(error => 
@@ -54,6 +53,15 @@ export const ForgotPassword: React.FunctionComponent<IForgotPasswordPageProps> =
         <div className="flex h-screen bg-[url('https://i0.wp.com/cornishbirdblog.com/wp-content/uploads/2018/09/2018-09-05-31-1844887230-1536173987584.png?fit=750%2C453&ssl=1')] bg-cover bg-no-repeat">
      <div className="w-full flex items-center justify-center  h-screen ">
    <div className=' w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-100'>
+    {sent ?
+    <div className="text-center">
+            <h1 className="text-3xl font-bold mb-5">Password Reset Email Sent</h1>
+            <p className="text-gray-500 mb-5">Check your email for a link to reset your password.</p>
+            <button className="bg-blue-500 text-white px-5 py-2 rounded-md hover:bg-blue-600" onClick={backToLogin}>Back to Login</button>
+        </div>
+        :
+        <div>
+            
        <h1 className='text-5xl font-semibold text-center'>Forgot Password</h1>
        <p className='font-medium text-lg text-center text-gray-500 mt-4'>please enter your email.</p>
        <div className='mt-8'>
@@ -67,7 +75,7 @@ export const ForgotPassword: React.FunctionComponent<IForgotPasswordPageProps> =
           
            <div className='mt-8 flex flex-col gap-y-4'>
               <button onClick={() => resetPasswordRequest() } className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>{sending ? 'Sending...' : 'Send Reset Email'}</button>
-              <button onClick={() => backToLogin() } className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'> Back To Login</button>
+              <button onClick={() => backToLogin() } className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 rounded-xl text-violet font-bold text-lg'> Back To Login</button>
 
                <ErrorRegister error={error}/>
 
@@ -76,7 +84,10 @@ export const ForgotPassword: React.FunctionComponent<IForgotPasswordPageProps> =
        </div>
        
    </div>
+}
    </div>
+   </div>
+
    </div>
    </main>
         
