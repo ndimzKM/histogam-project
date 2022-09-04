@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # Third-party apps
     'graphene_django',
     'corsheaders',
+    'firebase_auth',
 
     # Local apps
     'blog',
@@ -58,9 +59,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
+# Firebase settings
+FIREBASE_KEY_FILE = os.path.join(BASE_DIR, 'firebase-credentials.json')
+FIREBASE_DATABASE_URL = 'https://<firebase-project>.firebaseio.com'
+
+
 AUTHENTICATION_BACKENDS = [
     "graphql_jwt.backends.JSONWebTokenBackend",
     "django.contrib.auth.backends.ModelBackend",
+    "firebase_auth.authentication.FirebaseAuthentication",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -137,3 +144,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
